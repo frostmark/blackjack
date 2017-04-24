@@ -9,6 +9,10 @@ module Blackjack
       create
     end
 
+    def hand_out
+      @cards.delete(@cards.sample)
+    end
+
     private
 
     def create
