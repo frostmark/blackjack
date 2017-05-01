@@ -85,13 +85,30 @@ module Blackjack
     def result
       print_result
 
-      if 
-      if player.points > dealer.points
+      if condition_for_win player, dealer
         player.get_money(bank)
         puts('You win')
       else
         dealer.get_money(bank)
         puts('Dealer win')
+      end
+    end
+
+    def condition_for_win(player, dealer)
+      if player.points <= 21 && dealer.points <= 21
+        return player.points > dealer.points
+      end
+
+      if player.points > 21 && dealer.points > 21
+        return player.points < dealer.points
+      end
+
+      if player.points <= 21 && dealer.points > 21
+        return true
+      end
+
+      if player.points > 21 && dealer.points <= 21
+        false
       end
     end
 
