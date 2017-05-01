@@ -22,10 +22,16 @@ module Blackjack
           player_stats
 
           if player_action || is_end?
+
             result
             break
           end
+
+          if dealer.take_card?
+            dealer.cards << deck.hand_out
+          end
         end
+        create_deck
 
         print 'Enter "no" if you want to end this game: '
         exit if gets.chomp == 'no'
@@ -79,6 +85,7 @@ module Blackjack
     def result
       print_result
 
+      if 
       if player.points > dealer.points
         player.get_money(bank)
         puts('You win')
