@@ -13,7 +13,8 @@ module Blackjack
 
     def point
       return rank.to_i if ('2'..'10').include?(rank)
-      10 if %w[J Q K].include?(rank)
+      return 10 if %w[J Q K].include?(rank)
+      return [1, 11] if rank == 'A'
     end
   end
 end
