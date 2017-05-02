@@ -10,7 +10,7 @@ module Blackjack
     end
 
     def hand_out
-      @cards.delete(@cards.sample)
+      @cards.shuffle.pop
     end
 
     private
