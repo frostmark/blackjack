@@ -1,4 +1,4 @@
-require_relative('cli')
+require_relative 'cli'
 
 module Blackjack
   class Game

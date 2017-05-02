@@ -13,11 +13,11 @@ module Blackjack
     end
 
     def points
-      @cards.map do |x|
-        if x.point.is_a?(Array)
+      @cards.map do |card|
+        if card.point.is_a?(Array)
           11
         else
-          x.point
+          card.point
         end
 
       end.reduce(:+)
@@ -33,8 +33,7 @@ module Blackjack
     end
 
     def has_money?
-      return false if self.money < Bank::BET
-      true
+      money > Bank::BET
     end
   end
 end

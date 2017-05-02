@@ -18,19 +18,15 @@ module Blackjack
     end
 
     def give_money
-      @money, m = 0, money
+      @money, prize = 0, money
 
-      m
+      prize
     end
 
     private
 
     def player_has_money?(player)
-      if player.money < bet
-        return false
-      end
-
-      true
+      !(player.money < bet)
     end
   end
 end

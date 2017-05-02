@@ -2,10 +2,7 @@ module Blackjack
   class Dealer < Player
 
     def take_card?
-      if self.points <= 10 && self.cards.count < 3
-        return true
-      end
-      false
+      points <= 10 && cards.count < 3
     end
   end
 end
