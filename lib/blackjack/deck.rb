@@ -7,10 +7,11 @@ module Blackjack
 
     def initialize
       create
+      @cards.shuffle!
     end
 
     def hand_out
-      @cards.shuffle.pop
+      @cards.pop
     end
 
     private
