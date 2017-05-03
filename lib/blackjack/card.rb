@@ -16,5 +16,9 @@ module Blackjack
       return 10 if %w[J Q K].include?(rank)
       return [1, 11] if rank == 'A'
     end
+
+    def ace?
+      point.is_a?(Array)
+    end
   end
 end

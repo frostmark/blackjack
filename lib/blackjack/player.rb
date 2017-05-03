@@ -14,8 +14,13 @@ module Blackjack
 
     def points
       @cards.map do |card|
-        if card.point.is_a?(Array)
-          11
+        if card.ace?
+          current_points = @cards.select{|card| not card.ace?}.map(&:point).reduce(:+)
+          if current_points <= 10
+            card.point[1]
+          else
+            card.point[0]
+          end
         else
           card.point
         end

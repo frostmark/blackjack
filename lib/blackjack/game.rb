@@ -21,7 +21,7 @@ module Blackjack
         loop do
           player_stats
 
-          if player_action || is_end?
+          if player_action || end?
 
             result
             break
@@ -85,7 +85,7 @@ module Blackjack
     def result
       print_result
 
-      if condition_for_win player, dealer
+      if check player, dealer
         player.get_money(bank)
         puts('You win')
       else
@@ -94,7 +94,7 @@ module Blackjack
       end
     end
 
-    def condition_for_win(player, dealer)
+    def check(player, dealer)
       if player.points <= 21 && dealer.points <= 21
         return player.points > dealer.points
       end
@@ -112,12 +112,8 @@ module Blackjack
       end
     end
 
-    def is_end?
-      if player.cards.count == 3 && dealer.cards.count == 3
-        return true
-      end
-
-      false
+    def end?
+      player.cards.count == 3 && dealer.cards.count == 3
     end
   end
 end
